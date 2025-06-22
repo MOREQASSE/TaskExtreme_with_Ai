@@ -13,6 +13,18 @@ A modern, AI-enhanced task management application with intelligent task generati
 - ⏱️ **Focus Mode**: Pomodoro technique integration
 - 🔄 **Task Repeating**: Daily, custom day, or one-time tasks
 
+## Quick Start
+
+### Option 1: Local Development
+1. Clone the repository
+2. Run `./deploy.sh` for automated setup
+3. Or follow manual setup below
+
+### Option 2: Hybrid Hosting (Recommended)
+- **Frontend**: GitHub Pages (free)
+- **Backend**: Cloud server (Railway/Vercel/Netlify/Glitch)
+- See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions
+
 ## Setup
 
 ### Frontend (Web App)
@@ -33,6 +45,8 @@ To enable AI task generation:
    ```
    PORT=3001
    GITHUB_TOKEN=your_github_token_here
+   NODE_ENV=development
+   FRONTEND_URL=https://yourusername.github.io
    ```
 
 3. **Get a GitHub token:**
@@ -50,6 +64,32 @@ To enable AI task generation:
    ```
 
 5. **Access the AI backend at:** `http://localhost:3001`
+
+## Deployment Options
+
+### 🚀 Hybrid Hosting (Recommended)
+- **Frontend**: GitHub Pages (static hosting)
+- **Backend**: Cloud platform (Node.js API)
+- **Benefits**: Free frontend, scalable backend, professional setup
+
+**Quick Deploy:**
+1. Run `./deploy.sh` for setup guidance
+2. Follow [DEPLOYMENT.md](DEPLOYMENT.md) for detailed steps
+3. Choose your preferred cloud platform (no credit card required):
+   - [Railway](https://railway.app) (recommended - $5/month credit)
+   - [Vercel](https://vercel.com) (100GB bandwidth/month)
+   - [Netlify](https://netlify.com) (125K function calls/month)
+   - [Glitch](https://glitch.com) (completely free)
+
+### 🌐 GitHub Pages Only
+- Hosts only the frontend
+- AI features won't work without backend
+- Good for demo/testing
+
+### ☁️ Full Cloud Deployment
+- Deploy everything to a single platform
+- More complex setup
+- Higher costs
 
 ## Usage
 
@@ -86,6 +126,10 @@ TaskExtreme/
 │   ├── focus-mode.js      # Pomodoro timer
 │   └── theme.js           # Theme switching
 ├── package.json           # Node.js dependencies
+├── render.yaml            # Render deployment config
+├── vercel.json            # Vercel deployment config
+├── deploy.sh              # Deployment helper script
+├── DEPLOYMENT.md          # Detailed deployment guide
 └── README.md             # This file
 ```
 
@@ -110,6 +154,19 @@ The AI backend uses Azure's inference API with GPT-4. You can:
 - Add new input types (images, documents)
 - Customize task generation rules
 - Integrate with other AI providers
+
+## Troubleshooting
+
+### Common Issues
+1. **CORS Errors**: Check that your frontend URL is in the CORS origins
+2. **API Not Responding**: Verify environment variables and backend logs
+3. **GitHub Token Issues**: Ensure token has correct permissions
+
+### Getting Help
+- Check [DEPLOYMENT.md](DEPLOYMENT.md) for deployment issues
+- Run `./deploy.sh` for automated setup and testing
+- Review browser console for frontend errors
+- Check cloud platform logs for backend issues
 
 ## License
 

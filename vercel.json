@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "scripts/ai-task-generator.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/scripts/ai-task-generator.js"
+    },
+    {
+      "src": "/health",
+      "dest": "/scripts/ai-task-generator.js"
+    },
+    {
+      "src": "/",
+      "dest": "/scripts/ai-task-generator.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+} 

@@ -14,9 +14,43 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+// CORS configuration for production
+const corsOptions = {
+  origin: [
+    'http://localhost:8000',
+    'http://localhost:3000',
+    'https://yourusername.github.io', // Replace with your actual GitHub Pages URL
+    'https://*.github.io', // Allow all GitHub Pages domains
+    process.env.FRONTEND_URL // Allow custom frontend URL if set
+  ].filter(Boolean),
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(fileUpload());
+
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    service: 'TaskExtreme AI Backend'
+  });
+});
+
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'TaskExtreme AI Backend is running',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      generateTasks: '/api/ai-generate-tasks'
+    }
+  });
+});
 
 const endpoint = 'https://models.github.ai/inference';
 const model = 'openai/gpt-4.1';
