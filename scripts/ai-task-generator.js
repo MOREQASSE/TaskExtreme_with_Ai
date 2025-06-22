@@ -21,6 +21,7 @@ const corsOptions = {
     'http://localhost:3000',
     'https://yourusername.github.io', // Replace with your actual GitHub Pages URL
     'https://*.github.io', // Allow all GitHub Pages domains
+    'https://*.railway.app', // Allow all Railway domains
     process.env.FRONTEND_URL // Allow custom frontend URL if set
   ].filter(Boolean),
   credentials: true,
